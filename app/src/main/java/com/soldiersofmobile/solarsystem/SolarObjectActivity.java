@@ -3,9 +3,9 @@ package com.soldiersofmobile.solarsystem;
 import android.app.WallpaperManager;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.byoutline.secretsauce.utils.FontCache;
 
 import java.io.IOException;
 
@@ -40,8 +41,6 @@ public class SolarObjectActivity extends AppCompatActivity implements PlanetsAda
     ImageView detailImageView;
     @Bind(R.id.toolbar_layout)
     CollapsingToolbarLayout toolbarLayout;
-    @Bind(R.id.app_bar)
-    AppBarLayout appBar;
     @Bind(R.id.fab)
     FloatingActionButton fab;
     @Bind(R.id.detailsTextView)
@@ -63,8 +62,9 @@ public class SolarObjectActivity extends AppCompatActivity implements PlanetsAda
         setSupportActionBar(toolbar);
 
         solarObject = (SolarObject) getIntent().getSerializableExtra(OBJECT);
-        toolbar.setTitle(solarObject.getName());
-        toolbarLayout.setTitle(solarObject.getName());
+
+        setTitle();
+
 
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -101,7 +101,7 @@ public class SolarObjectActivity extends AppCompatActivity implements PlanetsAda
         Glide.with(this)
                 .load("file:///android_asset/" + solarObject.getImage())
                 .centerCrop()
-                .placeholder(R.drawable.planet_placeholder)
+//                .placeholder(R.drawable.planet_placeholder)
                 .into(detailImageView);
 
         SolarObject[] moons = solarObject.getMoons();
@@ -109,7 +109,7 @@ public class SolarObjectActivity extends AppCompatActivity implements PlanetsAda
         moonsLabel.setVisibility(hasMoons ? View.VISIBLE : View.GONE);
         moonsRecycleView.setVisibility(hasMoons ? View.VISIBLE : View.GONE);
         if (hasMoons) {
-            planetsAdapter = new PlanetsAdapter(getLayoutInflater());
+            planetsAdapter = new PlanetsAdapter(this, true);
             planetsAdapter.setPlanetClickedListener(this);
             planetsAdapter.setObjects(moons);
             moonsRecycleView.setAdapter(planetsAdapter);
@@ -118,6 +118,15 @@ public class SolarObjectActivity extends AppCompatActivity implements PlanetsAda
             moonsRecycleView.setNestedScrollingEnabled(false);
         }
 
+    }
+
+    private void setTitle() {
+        String name = solarObject.getName();
+        toolbarLayout.setTitle(name);
+        toolbar.setTitle(name);
+        Typeface medium = FontCache.get(Constants.BoldFont, this);
+        toolbarLayout.setCollapsedTitleTypeface(medium);
+        toolbarLayout.setExpandedTitleTypeface(medium);
     }
 
     public void watchYoutubeVideo(String id) {

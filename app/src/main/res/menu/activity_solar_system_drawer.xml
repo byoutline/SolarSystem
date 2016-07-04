@@ -5,15 +5,15 @@
         <item
             android:id="@+id/nav_planets"
             android:icon="@drawable/ic_planet_24dp"
-            android:title="Planets" />
+            android:title="@string/planets" />
         <item
             android:id="@+id/nav_moons"
             android:icon="@drawable/ic_moon_24dp"
-            android:title="Moons" />
+            android:title="@string/moons" />
         <item
             android:id="@+id/nav_other"
             android:icon="@drawable/ic_other_24dp"
-            android:title="Other" />
+            android:title="@string/other" />
     </group>
 
 </menu>

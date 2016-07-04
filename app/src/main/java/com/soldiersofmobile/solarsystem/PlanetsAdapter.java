@@ -1,5 +1,6 @@
 package com.soldiersofmobile.solarsystem;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,23 +10,23 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class PlanetsAdapter extends RecyclerView.Adapter<PlanetViewHolder> {
 
     private final LayoutInflater inflater;
-
+    private final boolean isHorizontal;
+    private final Context context;
     private SolarObject[] solarObjects = new SolarObject[0];
-
     private PlanetClickedListener planetClickedListener;
+    private int planetItemHeight = ViewGroup.LayoutParams.WRAP_CONTENT;
+    private int moonItemWidth = ViewGroup.LayoutParams.MATCH_PARENT;
 
-    public PlanetsAdapter(LayoutInflater inflater) {
-
-        this.inflater = inflater;
+    public PlanetsAdapter(Context context, boolean isHorizontal) {
+        this.context = context;
+        this.isHorizontal = isHorizontal;
+        this.inflater = LayoutInflater.from(context);
     }
 
     public void setPlanetClickedListener(PlanetClickedListener planetClickedListener) {
@@ -34,7 +35,7 @@ public class PlanetsAdapter extends RecyclerView.Adapter<PlanetViewHolder> {
 
     @Override
     public PlanetViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.item_planet, parent, false);
+        View view = inflater.inflate(isHorizontal ? R.layout.item_planet_horizontal : R.layout.item_planet_vertical, parent, false);
         return new PlanetViewHolder(view, this);
     }
 

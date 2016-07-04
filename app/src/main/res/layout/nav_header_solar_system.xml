@@ -6,11 +6,9 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:src="@mipmap/solarsystem"
-        android:adjustViewBounds="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:src="@drawable/solarsystem" />
 
 </FrameLayout>

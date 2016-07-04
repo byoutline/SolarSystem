@@ -8,4 +8,17 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="app_bar_height">300dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
+
+    <dimen name="font_12">12sp</dimen>
+    <dimen name="font_13">13sp</dimen>
+    <dimen name="global_elevation">4dp</dimen>
+    <dimen name="planet_item_height">220dp</dimen>
+    <dimen name="moon_item_size">200dp</dimen>
+    <dimen name="item_photo_size">180dp</dimen>
+    <dimen name="moon_margin">20dp</dimen>
+    <dimen name="font_16">16sp</dimen>
+    <dimen name="bottom_bar_height">56dp</dimen>
+    <dimen name="planet_item_radius">3dp</dimen>
+    <dimen name="planet_item_margin">4dp</dimen>
 </resources>
