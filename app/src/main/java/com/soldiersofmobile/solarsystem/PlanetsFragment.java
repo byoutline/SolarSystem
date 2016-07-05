@@ -30,7 +30,7 @@ public class PlanetsFragment extends Fragment implements PlanetsAdapter.PlanetCl
         super.onCreate(savedInstanceState);
         solarObjects = (SolarObject[]) getArguments().getSerializable(PLANETS);
 
-        adapter = new PlanetsAdapter(getContext(),false);
+        adapter = new PlanetsAdapter(getContext());
         adapter.setObjects(solarObjects);
         adapter.setPlanetClickedListener(this);
     }

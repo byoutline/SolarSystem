@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/contentBg"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.soldiersofmobile.solarsystem.SolarObjectActivity"
     tools:showIn="@layout/activity_solar_object">
@@ -14,33 +13,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.byoutline.secretsauce.views.CustomFontTextView
+        <TextView
             android:id="@+id/moonsLabel"
-            style="@style/DinMediumFontStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/moon_margin"
-            android:text="Moons"
-            android:textSize="@dimen/font_13"
-            app:textAllCaps="true" />
+            android:text="Moons" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/moonsRecycleView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/planet_item_height"
+            android:layout_height="200dp"
             android:clipToPadding="false"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
-        <com.byoutline.secretsauce.views.CustomFontTextView
+        <TextView
             android:id="@+id/detailsTextView"
-            style="@style/DinMediumFontStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/moon_margin"
-            android:textSize="@dimen/font_13" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 

@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/mainBlue</color>
-    <color name="colorPrimaryDark">@color/darkBlue</color>
-    <color name="colorAccent">#31e8a6</color>
-    <color name="textColor">@color/white</color>
+    <color name="colorPrimary">@android:color/white</color>
+    <color name="colorPrimaryDark">@android:color/black</color>
+    <color name="colorAccent">@android:color/holo_red_dark</color>
+    <color name="textColor">@android:color/white</color>
+
+    <!--<color name="colorPrimary">@color/mainBlue</color>-->
+    <!--<color name="colorPrimaryDark">@color/darkBlue</color>-->
+    <!--<color name="colorAccent">#31e8a6</color>-->
+    <!--<color name="textColor">@color/white</color>-->
 
 
-    <color name="white">#fff </color>
-    <color name="black">#000</color>
-    <color name="coverBackground">#323358</color>
-    <color name="mainBlue">#1d1f40</color>
-    <color name="darkBlue">#161831</color>
-    <color name="contentBg">#101126</color>
-    <color name="tabBg">#090920</color>
+    <!--<color name="white">#fff </color>-->
+    <!--<color name="black">#000</color>-->
+    <!--<color name="coverBackground">#323358</color>-->
+    <!--<color name="mainBlue">#1d1f40</color>-->
+    <!--<color name="darkBlue">#161831</color>-->
+    <!--<color name="contentBg">#101126</color>-->
+    <!--<color name="tabBg">#090920</color>-->
 </resources>

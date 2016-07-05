@@ -1,36 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/coverBackground"
-    android:orientation="vertical"
-    android:padding="7dp"
-    tools:showIn="@layout/item_planet_horizontal">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/itemImageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:adjustViewBounds="true"
-        android:background="@drawable/rounded_black_rectangle"
-        android:padding="10dp"
-        android:scaleType="centerInside" />
+        android:adjustViewBounds="true" />
 
-    <com.byoutline.secretsauce.views.CustomFontTextView
+    <TextView
         android:id="@+id/itemTextView"
-        style="@style/DinMediumFontStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:textColor="@color/white"
-        app:textAllCaps="true"
         tools:text="MERCURY" />
 
 </LinearLayout>

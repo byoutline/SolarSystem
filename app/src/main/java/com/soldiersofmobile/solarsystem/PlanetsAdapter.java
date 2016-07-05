@@ -16,16 +16,12 @@ import butterknife.ButterKnife;
 public class PlanetsAdapter extends RecyclerView.Adapter<PlanetViewHolder> {
 
     private final LayoutInflater inflater;
-    private final boolean isHorizontal;
     private final Context context;
     private SolarObject[] solarObjects = new SolarObject[0];
     private PlanetClickedListener planetClickedListener;
-    private int planetItemHeight = ViewGroup.LayoutParams.WRAP_CONTENT;
-    private int moonItemWidth = ViewGroup.LayoutParams.MATCH_PARENT;
 
-    public PlanetsAdapter(Context context, boolean isHorizontal) {
+    public PlanetsAdapter(Context context) {
         this.context = context;
-        this.isHorizontal = isHorizontal;
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -35,7 +31,7 @@ public class PlanetsAdapter extends RecyclerView.Adapter<PlanetViewHolder> {
 
     @Override
     public PlanetViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(isHorizontal ? R.layout.item_planet_horizontal : R.layout.item_planet_vertical, parent, false);
+        View view = inflater.inflate(R.layout.planet_item_content, parent, false);
         return new PlanetViewHolder(view, this);
     }
 

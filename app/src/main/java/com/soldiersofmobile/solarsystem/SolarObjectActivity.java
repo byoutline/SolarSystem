@@ -3,11 +3,8 @@ package com.soldiersofmobile.solarsystem;
 import android.app.WallpaperManager;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
@@ -24,7 +21,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.byoutline.secretsauce.utils.FontCache;
 
 import java.io.IOException;
 
@@ -39,8 +35,7 @@ public class SolarObjectActivity extends AppCompatActivity implements PlanetsAda
     Toolbar toolbar;
     @Bind(R.id.detailImageView)
     ImageView detailImageView;
-    @Bind(R.id.toolbar_layout)
-    CollapsingToolbarLayout toolbarLayout;
+
     @Bind(R.id.fab)
     FloatingActionButton fab;
     @Bind(R.id.detailsTextView)
@@ -53,6 +48,13 @@ public class SolarObjectActivity extends AppCompatActivity implements PlanetsAda
     private SolarObject solarObject;
     private PlanetsAdapter planetsAdapter;
 
+    public static void showObject(FragmentActivity activity, SolarObject solarObject) {
+        Intent intent = new Intent(activity, SolarObjectActivity.class);
+        intent.putExtra(SolarObjectActivity.OBJECT, solarObject);
+        activity.startActivity(intent);
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +64,6 @@ public class SolarObjectActivity extends AppCompatActivity implements PlanetsAda
         setSupportActionBar(toolbar);
 
         solarObject = (SolarObject) getIntent().getSerializableExtra(OBJECT);
-
-        setTitle();
 
 
         toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -84,11 +84,7 @@ public class SolarObjectActivity extends AppCompatActivity implements PlanetsAda
                 }
             });
         } else {
-            CoordinatorLayout.LayoutParams p = (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
-            p.setAnchorId(View.NO_ID);
-            fab.setLayoutParams(p);
             fab.setVisibility(View.GONE);
-
         }
 
         try {
@@ -109,7 +105,7 @@ public class SolarObjectActivity extends AppCompatActivity implements PlanetsAda
         moonsLabel.setVisibility(hasMoons ? View.VISIBLE : View.GONE);
         moonsRecycleView.setVisibility(hasMoons ? View.VISIBLE : View.GONE);
         if (hasMoons) {
-            planetsAdapter = new PlanetsAdapter(this, true);
+            planetsAdapter = new PlanetsAdapter(this);
             planetsAdapter.setPlanetClickedListener(this);
             planetsAdapter.setObjects(moons);
             moonsRecycleView.setAdapter(planetsAdapter);
@@ -120,14 +116,6 @@ public class SolarObjectActivity extends AppCompatActivity implements PlanetsAda
 
     }
 
-    private void setTitle() {
-        String name = solarObject.getName();
-        toolbarLayout.setTitle(name);
-        toolbar.setTitle(name);
-        Typeface medium = FontCache.get(Constants.BoldFont, this);
-        toolbarLayout.setCollapsedTitleTypeface(medium);
-        toolbarLayout.setExpandedTitleTypeface(medium);
-    }
 
     public void watchYoutubeVideo(String id) {
         try {
@@ -164,13 +152,6 @@ public class SolarObjectActivity extends AppCompatActivity implements PlanetsAda
     @Override
     public void planetClicked(SolarObject solarObject, int postion) {
         showObject(this, solarObject);
-    }
-
-    public static void showObject(FragmentActivity activity, SolarObject solarObject) {
-        Intent intent = new Intent(activity, SolarObjectActivity.class);
-        intent.putExtra(SolarObjectActivity.OBJECT, solarObject);
-        activity.startActivity(intent);
-
     }
 }
 
